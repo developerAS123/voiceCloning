@@ -1,0 +1,542 @@
+# RealtimeTTS/__init__.py
+
+from ._version import __version__
+
+__all__ = [
+    "__version__",
+    "TextToAudioStream", "BaseEngine", "TimingInfo",
+    "SystemEngine", "SystemVoice",
+    "AzureEngine", "AzureVoice",
+    "ElevenlabsEngine", "ElevenlabsVoice",
+    "CoquiEngine", "CoquiVoice",
+    "OpenAIEngine", "OpenAIVoice",
+    "GTTSEngine", "GTTSVoice",
+    "ParlerEngine", "ParlerVoice",
+    "EdgeEngine", "EdgeVoice",
+    "StyleTTSEngine", "StyleTTSVoice",
+    "PiperEngine", "PiperVoice",
+    "KokoroEngine", "KokoroVoice",
+    "OrpheusEngine", "OrpheusVoice",
+    "ZipVoiceEngine", "ZipVoiceVoice",
+    "PocketTTSEngine", "PocketTTSVoice",
+    "PocketTTSGpuEngine", "PocketTTSGpuVoice",
+    "NeuTTSEngine", "NeuTTSVoice",
+    "CambEngine", "CambVoice",
+    "ModelsLabEngine", "ModelsLabVoice",
+    "MiniMaxEngine", "MiniMaxVoice",
+    "CartesiaEngine", "CartesiaVoice",
+    "QwenEngine", "QwenVoice", "QwenEngineError",
+    "OmniVoiceEngine", "OmniVoiceVoice",
+    "TypecastEngine", "TypecastVoice",
+    "LuxTTSEngine", "LuxTTSVoice",
+    "ChatterboxEngine", "ChatterboxVoice",
+    "InflectEngine", "InflectVoice",
+    "SoproTTSEngine", "SoproTTSVoice",
+    "SopranoEngine", "SopranoVoice",
+    "MossTTSEngine", "MossTTSVoice",
+    "HiggsEngine", "HiggsVoice",
+]
+
+
+def _load_text_to_audio_stream():
+    from .text_to_stream import TextToAudioStream
+
+    globals()["TextToAudioStream"] = TextToAudioStream
+    return TextToAudioStream
+
+
+def _load_base_engine():
+    from .engines import BaseEngine, TimingInfo
+
+    globals()["BaseEngine"] = BaseEngine
+    globals()["TimingInfo"] = TimingInfo
+    return BaseEngine
+
+
+def _load_timing_info():
+    from .engines import BaseEngine, TimingInfo
+
+    globals()["BaseEngine"] = BaseEngine
+    globals()["TimingInfo"] = TimingInfo
+    return TimingInfo
+
+
+# Lazy loader functions for each engine group.
+def _load_system_engine():
+    try:
+        from .engines.system_engine import SystemEngine, SystemVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load SystemEngine and SystemVoice. "
+            "Please install with:\npip install realtimetts[system]"
+        ) from e
+    globals()["SystemEngine"] = SystemEngine
+    globals()["SystemVoice"] = SystemVoice
+    return SystemEngine
+
+
+def _load_azure_engine():
+    try:
+        from .engines.azure_engine import AzureEngine, AzureVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load AzureEngine and AzureVoice. "
+            "Please install with:\npip install realtimetts[azure]"
+        ) from e
+    globals()["AzureEngine"] = AzureEngine
+    globals()["AzureVoice"] = AzureVoice
+    return AzureEngine
+
+
+def _load_elevenlabs_engine():
+    try:
+        from .engines.elevenlabs_engine import ElevenlabsEngine, ElevenlabsVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load ElevenlabsEngine and ElevenlabsVoice. "
+            "Please install with:\npip install realtimetts[elevenlabs]"
+        ) from e
+    globals()["ElevenlabsEngine"] = ElevenlabsEngine
+    globals()["ElevenlabsVoice"] = ElevenlabsVoice
+    return ElevenlabsEngine
+
+
+def _load_coqui_engine():
+    try:
+        from .engines.coqui_engine import CoquiEngine, CoquiVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load CoquiEngine and CoquiVoice. "
+            "Please install with:\npip install realtimetts[coqui]"
+        ) from e
+    globals()["CoquiEngine"] = CoquiEngine
+    globals()["CoquiVoice"] = CoquiVoice
+    return CoquiEngine
+
+
+def _load_openai_engine():
+    try:
+        from .engines.openai_engine import OpenAIEngine, OpenAIVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load OpenAIEngine and OpenAIVoice. "
+            "Please install with:\npip install realtimetts[openai]"
+        ) from e
+    globals()["OpenAIEngine"] = OpenAIEngine
+    globals()["OpenAIVoice"] = OpenAIVoice
+    return OpenAIEngine
+
+
+def _load_gtts_engine():
+    try:
+        from .engines.gtts_engine import GTTSEngine, GTTSVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load GTTSEngine and GTTSVoice. "
+            "Please install with:\npip install realtimetts[gtts]"
+        ) from e
+    globals()["GTTSEngine"] = GTTSEngine
+    globals()["GTTSVoice"] = GTTSVoice
+    return GTTSEngine
+
+
+def _load_parler_engine():
+    try:
+        from .engines.parler_engine import ParlerEngine, ParlerVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load ParlerEngine and ParlerVoice. "
+            "See README for installation instructions."
+        ) from e
+    globals()["ParlerEngine"] = ParlerEngine
+    globals()["ParlerVoice"] = ParlerVoice
+    return ParlerEngine
+
+
+def _load_edge_engine():
+    try:
+        from .engines.edge_engine import EdgeEngine, EdgeVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load EdgeEngine and EdgeVoice. "
+            "Please install with:\npip install realtimetts[edge]"
+        ) from e
+    globals()["EdgeEngine"] = EdgeEngine
+    globals()["EdgeVoice"] = EdgeVoice
+    return EdgeEngine
+
+
+def _load_style_engine():
+    try:
+        from .engines.style_engine import StyleTTSEngine, StyleTTSVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load StyleTTSEngine and StyleTTSVoice. "
+            "See README for installation instructions."
+        ) from e
+    globals()["StyleTTSEngine"] = StyleTTSEngine
+    globals()["StyleTTSVoice"] = StyleTTSVoice
+    return StyleTTSEngine
+
+
+def _load_piper_engine():
+    try:
+        from .engines.piper_engine import PiperEngine, PiperVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load PiperEngine and PiperVoice. "
+            "See README for installation instructions."
+        ) from e
+    globals()["PiperEngine"] = PiperEngine
+    globals()["PiperVoice"] = PiperVoice
+    return PiperEngine
+
+
+def _load_kokoro_engine():
+    try:
+        from .engines.kokoro_engine import KokoroEngine, KokoroVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load KokoroEngine. Make sure you have installed the kokoro dependencies by running:\n"
+            "pip install realtimetts[kokoro]\n"
+            "(or pip install realtimetts[kokoro,jp,zh] for japanese and chinese support)"
+        ) from e
+    globals()["KokoroEngine"] = KokoroEngine
+    globals()["KokoroVoice"] = KokoroVoice
+    return KokoroEngine
+
+
+def _load_orpheus_engine():
+    try:
+        from .engines.orpheus_engine import OrpheusEngine, OrpheusVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load OrpheusEngine and OrpheusVoice. "
+            "Please install with:\npip install realtimetts[orpheus]"
+        ) from e
+    globals()["OrpheusEngine"] = OrpheusEngine
+    globals()["OrpheusVoice"] = OrpheusVoice
+    return OrpheusEngine
+
+
+def _load_zipvoice_engine():
+    try:
+        from .engines.zipvoice_engine import ZipVoiceEngine, ZipVoiceVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load ZipVoiceEngine and ZipVoiceVoice. "
+            "See README for installation instructions."
+        ) from e
+    globals()["ZipVoiceEngine"] = ZipVoiceEngine
+    globals()["ZipVoiceVoice"] = ZipVoiceVoice
+    return ZipVoiceEngine
+
+
+def _load_pocket_engine():
+    try:
+        from .engines.pocket_engine import PocketTTSEngine, PocketTTSVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load PocketTTSEngine and PocketTTSVoice. "
+            "Please install with: pip install pocket-tts"
+        ) from e
+    globals()["PocketTTSEngine"] = PocketTTSEngine
+    globals()["PocketTTSVoice"] = PocketTTSVoice
+    return PocketTTSEngine
+
+
+def _load_pocket_gpu_engine():
+    try:
+        from .engines.pocket_gpu_engine import PocketTTSGpuEngine, PocketTTSGpuVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load PocketTTSGpuEngine and PocketTTSGpuVoice. "
+            "Install a CUDA-enabled PyTorch build, then the pinned CUDA fork:\n"
+            "pip install git+https://github.com/Deveraux-Parker/kutai100temp.git@6beddc19c480da9ced9733ba0bb2f199f6e22ab4#subdirectory=pocket-tts-gpu"
+        ) from e
+    globals()["PocketTTSGpuEngine"] = PocketTTSGpuEngine
+    globals()["PocketTTSGpuVoice"] = PocketTTSGpuVoice
+    return PocketTTSGpuEngine
+
+
+def _load_neutts_engine():
+    try:
+        from .engines.neutts_engine import NeuTTSEngine, NeuTTSVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load NeuTTSEngine and NeuTTSVoice. "
+            "Install NeuTTS from: https://github.com/neuphonic/neutts"
+        ) from e
+    globals()["NeuTTSEngine"] = NeuTTSEngine
+    globals()["NeuTTSVoice"] = NeuTTSVoice
+    return NeuTTSEngine
+
+
+def _load_camb_engine():
+    try:
+        from .engines.camb_engine import CambEngine, CambVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load CambEngine and CambVoice. "
+            "Please install with:\npip install realtimetts[camb]"
+        ) from e
+    globals()["CambEngine"] = CambEngine
+    globals()["CambVoice"] = CambVoice
+    return CambEngine
+
+
+def _load_modelslab_engine():
+    try:
+        from .engines.modelslab_engine import ModelsLabEngine, ModelsLabVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load ModelsLabEngine and ModelsLabVoice. "
+            "Please install with:\npip install \"realtimetts[modelslab]\""
+        ) from e
+    globals()["ModelsLabEngine"] = ModelsLabEngine
+    globals()["ModelsLabVoice"] = ModelsLabVoice
+    return ModelsLabEngine
+
+
+def _load_minimax_engine():
+    try:
+        from .engines.minimax_engine import MiniMaxEngine, MiniMaxVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load MiniMaxEngine and MiniMaxVoice. "
+            "Please install with:\npip install realtimetts[minimax]"
+        ) from e
+    globals()["MiniMaxEngine"] = MiniMaxEngine
+    globals()["MiniMaxVoice"] = MiniMaxVoice
+    return MiniMaxEngine
+
+
+def _load_cartesia_engine():
+    try:
+        from .engines.cartesia_engine import CartesiaEngine, CartesiaVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load CartesiaEngine. "
+            "See README for installation instructions."
+        ) from e
+    globals()["CartesiaEngine"] = CartesiaEngine
+    globals()["CartesiaVoice"] = CartesiaVoice
+    return CartesiaEngine
+
+
+def _load_qwen_engine():
+    try:
+        from .engines.qwen_engine import QwenEngine, QwenEngineError, QwenVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load QwenEngine. Install it with:\n"
+            "pip install \"realtimetts[qwen]\""
+        ) from e
+    globals()["QwenEngine"] = QwenEngine
+    globals()["QwenVoice"] = QwenVoice
+    globals()["QwenEngineError"] = QwenEngineError
+    return QwenEngine
+
+
+def _load_qwen_voice():
+    _load_qwen_engine()
+    return globals()["QwenVoice"]
+
+
+def _load_qwen_error():
+    _load_qwen_engine()
+    return globals()["QwenEngineError"]
+
+
+def _load_omni_voice_engine():
+    try:
+        from .engines.omnivoice_engine import OmniVoiceEngine, OmniVoiceVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load OmniVoiceEngine and OmniVoiceVoice. "
+            "See README for installation instructions."
+        ) from e
+    globals()["OmniVoiceEngine"] = OmniVoiceEngine
+    globals()["OmniVoiceVoice"] = OmniVoiceVoice
+    return OmniVoiceEngine
+
+
+def _load_typecast_engine():
+    try:
+        from .engines.typecast_engine import TypecastEngine, TypecastVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load TypecastEngine and TypecastVoice. "
+            "Make sure the `cast` CLI is installed: https://typecast.ai"
+        ) from e
+    globals()["TypecastEngine"] = TypecastEngine
+    globals()["TypecastVoice"] = TypecastVoice
+    return TypecastEngine
+
+
+def _load_luxtts_engine():
+    try:
+        from .engines.luxtts_engine import LuxTTSEngine, LuxTTSVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load LuxTTSEngine and LuxTTSVoice. "
+            "Install LuxTTS from https://github.com/ysharma3501/LuxTTS "
+            "or pass lux_root to the local LuxTTS checkout."
+        ) from e
+    globals()["LuxTTSEngine"] = LuxTTSEngine
+    globals()["LuxTTSVoice"] = LuxTTSVoice
+    return LuxTTSEngine
+
+
+def _load_chatterbox_engine():
+    try:
+        from .engines.chatterbox_engine import ChatterboxEngine, ChatterboxVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load ChatterboxEngine and ChatterboxVoice. "
+            "Install Chatterbox Turbo with: pip install chatterbox-tts"
+        ) from e
+    globals()["ChatterboxEngine"] = ChatterboxEngine
+    globals()["ChatterboxVoice"] = ChatterboxVoice
+    return ChatterboxEngine
+
+
+def _load_inflect_engine():
+    try:
+        from .engines.inflect_engine import InflectEngine, InflectVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load InflectEngine and InflectVoice. "
+            "Install Inflect dependencies with: pip install realtimetts[inflect]"
+        ) from e
+    globals()["InflectEngine"] = InflectEngine
+    globals()["InflectVoice"] = InflectVoice
+    return InflectEngine
+
+
+def _load_sopro_engine():
+    try:
+        from .engines.sopro_engine import SoproTTSEngine, SoproTTSVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load SoproTTSEngine and SoproTTSVoice. "
+            "Install SoproTTS with: pip install sopro"
+        ) from e
+    globals()["SoproTTSEngine"] = SoproTTSEngine
+    globals()["SoproTTSVoice"] = SoproTTSVoice
+    return SoproTTSEngine
+
+
+def _load_soprano_engine():
+    try:
+        from .engines.soprano_engine import SopranoEngine, SopranoVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load SopranoEngine and SopranoVoice. "
+            "Install SopranoTTS with: pip install soprano-tts"
+        ) from e
+    globals()["SopranoEngine"] = SopranoEngine
+    globals()["SopranoVoice"] = SopranoVoice
+    return SopranoEngine
+
+
+def _load_moss_tts_engine():
+    try:
+        from .engines.moss_tts_engine import MossTTSEngine, MossTTSVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load MossTTSEngine and MossTTSVoice. "
+            "Install MOSS-TTS-Nano from https://github.com/OpenMOSS/MOSS-TTS-Nano"
+        ) from e
+    globals()["MossTTSEngine"] = MossTTSEngine
+    globals()["MossTTSVoice"] = MossTTSVoice
+    return MossTTSEngine
+
+
+def _load_higgs_engine():
+    try:
+        from .engines.higgs_engine import HiggsEngine, HiggsVoice
+    except ImportError as e:
+        raise ImportError(
+            "Failed to load HiggsEngine and HiggsVoice. "
+            "Install with: pip install realtimetts[higgs]"
+        ) from e
+    globals()["HiggsEngine"] = HiggsEngine
+    globals()["HiggsVoice"] = HiggsVoice
+    return HiggsEngine
+
+
+# Mapping names to their lazy loader functions.
+_lazy_imports = {
+    "TextToAudioStream": _load_text_to_audio_stream,
+    "BaseEngine": _load_base_engine,
+    "TimingInfo": _load_timing_info,
+    "SystemEngine": _load_system_engine,
+    "SystemVoice": _load_system_engine,
+    "AzureEngine": _load_azure_engine,
+    "AzureVoice": _load_azure_engine,
+    "ElevenlabsEngine": _load_elevenlabs_engine,
+    "ElevenlabsVoice": _load_elevenlabs_engine,
+    "CoquiEngine": _load_coqui_engine,
+    "CoquiVoice": _load_coqui_engine,
+    "OpenAIEngine": _load_openai_engine,
+    "OpenAIVoice": _load_openai_engine,
+    "GTTSEngine": _load_gtts_engine,
+    "GTTSVoice": _load_gtts_engine,
+    "ParlerEngine": _load_parler_engine,
+    "ParlerVoice": _load_parler_engine,
+    "EdgeEngine": _load_edge_engine,
+    "EdgeVoice": _load_edge_engine,
+    "StyleTTSEngine": _load_style_engine, 
+    "StyleTTSVoice": _load_style_engine,
+    "PiperEngine": _load_piper_engine,
+    "PiperVoice": _load_piper_engine,
+    "KokoroEngine": _load_kokoro_engine,
+    "KokoroVoice": _load_kokoro_engine,
+    "OrpheusEngine": _load_orpheus_engine,
+    "OrpheusVoice": _load_orpheus_engine,
+    "ZipVoiceEngine": _load_zipvoice_engine,
+    "ZipVoiceVoice": _load_zipvoice_engine,
+    "PocketTTSEngine": _load_pocket_engine,
+    "PocketTTSVoice": _load_pocket_engine,
+    "PocketTTSGpuEngine": _load_pocket_gpu_engine,
+    "PocketTTSGpuVoice": _load_pocket_gpu_engine,
+    "NeuTTSEngine": _load_neutts_engine,
+    "NeuTTSVoice": _load_neutts_engine,
+    "CambEngine": _load_camb_engine,
+    "CambVoice": _load_camb_engine,
+    "ModelsLabEngine": _load_modelslab_engine,
+    "ModelsLabVoice": _load_modelslab_engine,
+    "MiniMaxEngine": _load_minimax_engine,
+    "MiniMaxVoice": _load_minimax_engine,
+    "CartesiaEngine": _load_cartesia_engine,
+    "CartesiaVoice": _load_cartesia_engine,
+    "QwenEngine": _load_qwen_engine,
+    "QwenVoice": _load_qwen_voice,
+    "QwenEngineError": _load_qwen_error,
+    "OmniVoiceEngine": _load_omni_voice_engine,
+    "OmniVoiceVoice": _load_omni_voice_engine,
+    "TypecastEngine": _load_typecast_engine,
+    "TypecastVoice": _load_typecast_engine,
+    "LuxTTSEngine": _load_luxtts_engine,
+    "LuxTTSVoice": _load_luxtts_engine,
+    "ChatterboxEngine": _load_chatterbox_engine,
+    "ChatterboxVoice": _load_chatterbox_engine,
+    "InflectEngine": _load_inflect_engine,
+    "InflectVoice": _load_inflect_engine,
+    "SoproTTSEngine": _load_sopro_engine,
+    "SoproTTSVoice": _load_sopro_engine,
+    "SopranoEngine": _load_soprano_engine,
+    "SopranoVoice": _load_soprano_engine,
+    "MossTTSEngine": _load_moss_tts_engine,
+    "MossTTSVoice": _load_moss_tts_engine,
+    "HiggsEngine": _load_higgs_engine,
+    "HiggsVoice": _load_higgs_engine,
+}
+
+
+def __getattr__(name):
+    if name in _lazy_imports:
+        _lazy_imports[name]()
+        return globals()[name]
+    raise AttributeError(f"module {__name__} has no attribute {name}")

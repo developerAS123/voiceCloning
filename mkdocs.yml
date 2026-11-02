@@ -1,0 +1,88 @@
+site_name: RealtimeTTS Documentation
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.top
+    - navigation.tabs
+
+plugins:
+  - i18n:
+      languages:
+        - locale: en
+          name: English
+          build: true
+          default: true
+        - locale: ar
+          name: Arabic
+          build: true
+        - locale: de
+          name: German
+          build: true
+        - locale: es
+          name: Spanish
+          build: true
+        - locale: fr
+          name: French
+          build: true
+        - locale: hi
+          name: Hindi
+          build: true
+        - locale: it
+          name: Italian
+          build: true
+        - locale: ja
+          name: Japanese
+          build: true
+        - locale: ko
+          name: Korean
+          build: true
+        - locale: pt
+          name: Portuguese
+          build: true
+        - locale: ru
+          name: Russian
+          build: true
+        - locale: zh
+          name: Chinese
+          build: true
+
+nav:
+  - Home: index.md
+  - Quick Start: quick-start.md
+  - Installation: installation.md
+  - Engine Selection: engine-selection.md
+  - Engine Setups:
+      - System: engines/system.md
+      - gTTS: engines/gtts.md
+      - Edge: engines/edge.md
+      - OpenAI: engines/openai.md
+      - Azure: engines/azure.md
+      - ElevenLabs: engines/elevenlabs.md
+      - CAMB: engines/camb.md
+      - MiniMax: engines/minimax.md
+      - Cartesia: engines/cartesia.md
+      - Typecast: engines/typecast.md
+      - ModelsLab: engines/modelslab.md
+      - Coqui: engines/coqui.md
+      - Piper: engines/piper.md
+      - StyleTTS: engines/styletts.md
+      - Parler: engines/parler.md
+      - Kokoro: engines/kokoro.md
+      - Orpheus: engines/orpheus.md
+      - Qwen: engines/qwen.md
+      - OmniVoice: engines/omnivoice.md
+      - PocketTTS: engines/pockettts.md
+      - NeuTTS: engines/neutts.md
+      - ZipVoice: engines/zipvoice.md
+      - LuxTTS: engines/luxtts.md
+      - Chatterbox: engines/chatterbox.md
+      - Inflect: engines/inflect.md
+      - SoproTTS: engines/sopro.md
+      - Soprano: engines/soprano.md
+      - MOSS-TTS: engines/moss-tts.md
+      - Higgs Audio v3: engines/higgs.md
+  - Forced Alignment: ctc-forced-alignment.md
+  - Feed And Playback: feed-and-playback.md
+  - LLM Streaming: llm-streaming.md
+  - Output And Files: output-and-files.md
